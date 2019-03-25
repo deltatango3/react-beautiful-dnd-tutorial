@@ -45,27 +45,4 @@ const Column = props => {
   );
 };
 
-// class Column extends Component {
-//   getTasks = () =>
-//     this.props.tasks.map((task, index) => {
-//       return <Task key={task.id} task={task} index={index} />;
-//     });
-
-//   render() {
-//     return (
-//       <Container>
-//         <Title>{this.props.column.title}</Title>
-//         <Droppable droppableId={this.props.column.id}>
-//           {provided => (
-//             <TaskList ref={provided.innerRef} {...provided.droppableProps}>
-//               {this.getTasks()}
-//               {provided.placeholder}
-//             </TaskList>
-//           )}
-//         </Droppable>
-//       </Container>
-//     );
-//   }
-// }
-
 export default Column;
