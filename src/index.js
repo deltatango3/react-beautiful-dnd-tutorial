@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import initialData from "./initialData";
-import Column from "./Column";
+import ColumnList from "./ColumnList";
 
 const Container = styled.div`
   display: flex;
@@ -101,13 +101,6 @@ const App = () => {
     setData(newData);
   };
 
-  const InnerList = memo(props => {
-    const tasks = props.column.taskIds.map(taskId =>
-      data.tasks.find(task => task.id === taskId)
-    );
-    return <Column column={props.column} tasks={tasks} index={props.index} />;
-  });
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
@@ -119,11 +112,12 @@ const App = () => {
               );
 
               return (
-                <InnerList
+                <ColumnList
                   key={column.id}
                   column={column}
                   taskMap={data.tasks}
                   index={index}
+                  data={data}
                 />
               );
             })}
